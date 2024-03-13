@@ -2,7 +2,7 @@
 
 import { useSession } from "next-auth/react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import Form from "@components/Form";
 
 const EditPrompt = () => {
@@ -43,11 +43,9 @@ const EditPrompt = () => {
           tag:post.tag
         })
       })
-      console.log("reponse")
       if(response.ok){
         router.push('/')
       }
-      console.log(response.ok)
     } catch (error) {
       console.log(error)
     } finally {
@@ -56,13 +54,15 @@ const EditPrompt = () => {
   }
 
   return (
-    <Form 
-      type="Edit"
-      post={post}
-      setPost={setPost}
-      submitting={submitting}
-      handleSubmit={updatePrompt}
-    />
+    <Suspense>
+      <Form 
+        type="Edit"
+        post={post}
+        setPost={setPost}
+        submitting={submitting}
+        handleSubmit={updatePrompt}
+      />
+    </Suspense>
   )
 }
 
