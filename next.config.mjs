@@ -1,6 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    missingSuspenseWithCSRBailout: false,
+    experimental: {
+      missingSuspenseWithCSRBailout: false,
+    },
     images: {
       domains: ["lh3.googleusercontent.com"],
     },
