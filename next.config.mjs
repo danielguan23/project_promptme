@@ -15,7 +15,7 @@ const nextConfig = {
     },
     headers: () => [
       {
-        source: '/:path*',
+        source: '/',
         headers: [
           {
             key: 'Cache-Control',
