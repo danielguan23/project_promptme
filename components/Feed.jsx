@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect,useState } from "react";
+import { Suspense, useEffect,useState } from "react";
 import PromptCard from "./PromptCard";
 
 const PromptCardList = ({data, handleTagClick})=>{
@@ -52,10 +52,13 @@ const Feed = () => {
           className="search_input peer"
         />
       </form>
-      <PromptCardList
-        data={posts}
-        handleTagClick={()=>{}}
-      />
+      {/* <Suspense fallback={<p>Loading...</p>}> */}
+        <PromptCardList
+          data={posts}
+          handleTagClick={(e)=>{
+            setCurrentSearch(e)}}
+        />
+      {/* </Suspense> */}
     </section>
   )
 }
